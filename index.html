@@ -695,7 +695,7 @@ async function handleAnalisar(){
   if(!clientId){ errEl.innerHTML = '<div class="error-box">Cria e seleciona um cliente antes de analisar.</div>'; return; }
   if(!fwIds.length){ errEl.innerHTML = '<div class="error-box">Marca pelo menos um framework pra avaliar.</div>'; return; }
   if(!transcricao || transcricao.length < 200){ errEl.innerHTML = '<div class="error-box">Cole a transcrição literal completa antes de analisar. Um texto muito curto normalmente é resumo, não transcrição.</div>'; return; }
-  if(!getApiKey()){ errEl.innerHTML = '<div class="error-box">Salva sua chave da API Anthropic em Configurações antes de analisar.</div>'; return; }
+  if(!getApiKey()){ errEl.innerHTML = `<div class="error-box">Salva sua chave da API ${escapeHtml(PROVIDERS[getProvider()].nome)} em Configurações antes de analisar.</div>`; return; }
   if(!nome){ nome = `${vendedor||"Call"} · ${dataCall||new Date().toLocaleDateString("pt-BR")}`; }
 
   const btn = document.getElementById("btnAnalisar");
